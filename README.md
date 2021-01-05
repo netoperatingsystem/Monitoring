@@ -7,6 +7,6 @@ Biblioteki ~$ apt install ipython3-qtconsole python3-tk python3-sip python3-pyqt
 
 Katalog główny projektu "Monitoring" /home/monitoring/
 
-Tworzenie środowiska do pracy ~$ virtualenv -p python3 pve3 ~$ source pve3/bin/activate (pve3) ~$ pip install Django==1.11.2
+Tworzenie środowiska do pracy ~$ virtualenv -p python3 pve3 ~$ source pve3/bin/activate (pve3) ~$ pip install requirements.txt
 
 Tworzenie proejktu Django o nazwie monitoring (pve3) ~/$ django-admin.py startproject monitoring (pve3) ~$ cd monitoring (pve3) ~$ python manage.py migrate
