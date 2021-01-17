@@ -1,0 +1,25 @@
+<!-- templates/netos/index.html -->
+<html>
+  <head></head>
+  <body>
+    <h1>Aplikacja netOS!</h1>
+      {% if messages %}
+        <ul>
+        {% for komunikat in messages %}
+           <li>{{ komunikat|capfirst }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if not user.is_authenticated %}
+        <ul>
+          <li><a href="{% url 'netos:login' %}">Zaloguj się</a></li>
+        </ul>
+      {% else %}
+        <p>Jesteś zalogowany jako {{ user.username }}</p>
+        <ul>
+          <li><a href="{% url 'netos:logout' %}">Wyloguj</a></li>
+        </ul>
+      {% endif %}
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!-- templates/netos/loginWeb.html -->
+<html>
+  <head></head>
+  <body>
+    <h1>Witaj w aplikacji netOS!</h1>
+
+    <h2>Logowanie użytkownika</h2>
+    {% if not user.is_authenticated %}
+      <form action="." method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Zaloguj</button>
+      </form>
+    {% else %}
+      <p>Jesteś już zalogowany jako {{ user.username }}</p>
+        <ul>
+        <li><a href="{% url 'netos:index'%}">Strona główna</a></li>
+      </ul>
+    {% endif %}
+  </body>
+</html>
