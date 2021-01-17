@@ -1,1 +1,7 @@
+asgiref==3.3.1
 Django==3.1.5
+<<<<<<< HEAD
+=======
+pytz==2020.5
+sqlparse==0.4.1
+>>>>>>> 0d82ee2158bf099a259f6ef9421b63b7f46ec2f8
