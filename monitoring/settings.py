@@ -31,13 +31,14 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'netos.apps.NetosConfig', # registering the application netos
+    'netos.apps.NetosConfig',           # registering the application netos
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +69,7 @@ TEMPLATES = [
     },
 ]
 
+ASGI_APPLICATION = 'monitoring.asgi.application'
 WSGI_APPLICATION = 'monitoring.wsgi.application'
 
 
@@ -104,9 +106,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'pl' # set a language
+LANGUAGE_CODE = 'pl'            # set a language
 
-TIME_ZONE = 'Europe/Warsaw' # set the time zone
+TIME_ZONE = 'Europe/Warsaw'     # set the time zone
 
 USE_I18N = True
 

@@ -12,13 +12,22 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib import messages
 
+# index
 
 def index(request):
-    """Strona główna aplikacji."""
-    #return HttpResponse("Aplikacja netOS!")
+    """
+    Index page
+    """
+    # return HttpResponse("Aplikacja netOS!")
     return render(request, 'netos/index.html')
+
+
+# login
+
 def loginPage(request):
-    """user login"""
+    """
+    User login page
+    """
     from django.contrib.auth.forms import AuthenticationForm
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
@@ -27,12 +36,24 @@ def loginPage(request):
             messages.success(request, "Zostales zalogowany!")
             return redirect(reverse('netos:index'))
 
-    kontekst = {'form': AuthenticationForm()}
-    return render(request, 'netos/loginWeb.html', kontekst)
+    context = {'form': AuthenticationForm()}
+    return render(request, 'netos/loginWeb.html', context)
 
+
+# logout
 
 def logoutPage(request):
-    """user logout"""
+    """
+    User logout page
+    """
     logout(request)
     messages.info(request, "Zostałeś wylogowany!")
     return redirect(reverse('netos:index'))
+
+
+# chat message
+
+def room(request, room_name):
+    return render(request, 'netos/room.html', {
+        'room_name': room_name
+    })
