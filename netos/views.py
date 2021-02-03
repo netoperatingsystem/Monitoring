@@ -33,7 +33,7 @@ def loginPage(request):
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
             login(request, form.get_user())
-            messages.success(request, "Zostales zalogowany!")
+            # messages.success(request, "Zostales zalogowany!")
             return redirect(reverse('netos:index'))
 
     context = {'form': AuthenticationForm()}
@@ -47,7 +47,7 @@ def logoutPage(request):
     User logout page
     """
     logout(request)
-    messages.info(request, "Zostałeś wylogowany!")
+    # messages.info(request, "Zostałeś wylogowany!")
     return redirect(reverse('netos:index'))
 
 
