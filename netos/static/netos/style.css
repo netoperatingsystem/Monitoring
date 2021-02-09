@@ -1,5 +1,37 @@
 html {}
+
+body{
+    background-color: #D9D9D9;
+}
+
 .btn {
+    margin: 10px 0 0 0;
     background-color: #711624;
     color: white;
+}
+
+.wrapper-index, .wrapper-login {
+    background-color: white;
+    text-align: center;
+    padding: 10px;
+    border-style: solid;
+    border-radius: 15px;
+    border-width: 3px;
+    border-width: 3px;
+    border-color: #711624;
+    min-width: 300px;
+}
+
+.wrapper-index {
+    margin: 100px 30% 0 30%;
+}
+
+.wrapper-login {
+    margin: 100px 30% 0 30%;
+}
+
+.form-group{
+    align-items: center;
+    max-width: 300px;
+    margin: 30px auto 0 auto;
 }
