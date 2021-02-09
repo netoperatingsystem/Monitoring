@@ -1,72 +1,76 @@
 <!-- templates/netos/index.html -->
 <html>
-  <head>
-      {% load static %}
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-            crossorigin="anonymous">
-      <link rel="stylesheet" type="text/css" href="{% static 'netos/style.css' %}"/>
-  </head>
+<head>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'netos/style.css' %}"/>
+    <title>NetOS</title>
+</head>
 
 
-      {% if messages %}
-        <ul>
+{% if messages %}
+    <ul>
         {% for komunikat in messages %}
-           <li>{{ komunikat|capfirst }}</li>
+            <li>{{ komunikat|capfirst }}</li>
         {% endfor %}
-        </ul>
-      {% endif %}
+    </ul>
+{% endif %}
 
-      {% if not user.is_authenticated %}
+{% if not user.is_authenticated %}
 
-          <meta http-equiv="refresh" content="0; url=login" />
-{#          <div class="sign-in">#}
-{#          <img src="/static/resources/logo.PNG"></br>#}
-{##}
-{#          <a type="button" class="btn" href="{% url 'netos:login' %}">Zaloguj się</a>#}
-{#          </div>#}
+    <meta http-equiv="refresh" content="0; url=login"/>
+    {#          <div class="sign-in">#}
+    {#          <img src="/static/resources/logo.PNG"></br>#}
+    {##}
+    {#          <a type="button" class="btn" href="{% url 'netos:login' %}">Zaloguj się</a>#}
+    {#          </div>#}
 
-      {% else %}
+{% else %}
 
-          <nav class="navbar navbar-expand-lg navbar-light bg-white">
-              <div class="container-fluid">
-                  <img src="/static/resources/logo.PNG" height="60">
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                          <li class="nav-item">
-                              <a class="nav-link active" aria-current="page" href="#">Home</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link" href="#">Link</a>
-                          </li>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container-fluid">
+            <img src="/static/resources/logo.PNG" height="60">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
 
 
-                      </ul>
-                      <form class="d-flex">
-                          <p>Jesteś zalogowany jako {{ user.username }}</p>
-                      <a type="button" class="btn" href="{% url 'netos:logout' %}">Wyloguj</a>
-                      </form>
-                  </div>
-              </div>
-          </nav>
+                </ul>
+                <form class="d-flex">
+                          <span class="navbar-text">
+                              Jesteś zalogowany jako: <b>{{ user.username }}</b>
+                          </span>
+                    <a type="button" class="btn" href="{% url 'netos:logout' %}">Wyloguj</a>
+                </form>
+            </div>
+        </div>
+    </nav>
 
-        <div class="wrapper-index">
+    <div class="wrapper-index">
 
         <img src="/static/resources/__testwykres.png">
 
 
-        </div>
+    </div>
 
-      {% endif %}
+{% endif %}
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-          crossorigin="anonymous">
-  </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous">
+</script>
 </html>
