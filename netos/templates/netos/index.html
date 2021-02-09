@@ -20,7 +20,7 @@
       {% endif %}
 
       {% if not user.is_authenticated %}
-          <a ype="button" class="btn" href="{% url 'netos:login' %}">Zaloguj się</a>
+          <a type="button" class="btn" href="{% url 'netos:login' %}">Zaloguj się</a>
       {% else %}
         <p>Jesteś zalogowany jako {{ user.username }}</p>
           <a type="button" class="btn" href="{% url 'netos:logout' %}">Wyloguj</a>
