@@ -12,5 +12,6 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^login/$', views.loginPage, name='login'),
     url(r'^logout/$', views.logoutPage, name='logout'),
+    url(r'^devices/$', views.devicesPage, name='devices'),
     # url(r'^<str:room_name>/$', views.room, name='room'),
 ]

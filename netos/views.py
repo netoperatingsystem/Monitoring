@@ -50,6 +50,12 @@ def logoutPage(request):
     # messages.info(request, "Zostałeś wylogowany!")
     return redirect(reverse('netos:index'))
 
+def devicesPage(request):
+    """
+    Devices list page
+    """
+    # return HttpResponse("Aplikacja netOS!")
+    return render(request, 'netos/devices.html')
 
 # chat message
 
