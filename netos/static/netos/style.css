@@ -70,8 +70,8 @@ span {
 
 .panel {
     /*align-items: center;*/
-    width: 1200px;
-    height: 750px;
+    width: 90%;
+    height: 80%;
     overflow: hidden;
     margin: 30px auto 0 auto;
     border-style: solid;
