@@ -77,14 +77,35 @@
                     <p class="text-white">&copy; Copyright 2021</p>
                 </section>
             </div>
+
             <div class="col-8 p-0">
                 <div class="col-12 mt-0 ">
-                    <section class="main-stats py-2 text-light text-center">
-                        {% for zap in zapytanie %}
-                        <div class="main-stat-box p-2">
-                        <h1><p>{{ zap }}</p><h1/>
+                    <section class="main-stats py-4 px-5 text-light text-center">
+                        <h1 class="mb-5">Reservation - IP Address</h1>
+                        <div class="row mb-5">
+                            <div class="col-12">
+                                <div class="main-stat-box p-5 text-left">
+                                    <h3>Paweł_IP</h3>
+                                    <p>Address_IP: 192.168.20.10; 192.168.20.11</p>
+                                </div>
+                            </div>
                         </div>
-                        {% endfor %}
+                        <div class="row mb-5">
+                            <div class="col-12">
+                                <div class="main-stat-box p-5">
+                                    <h3>Filip_IP</h3>
+                                    <p>Address_IP: 192.168.20.12; 192.168.20.13; 192.168.20.14</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-12">
+                                <div class="main-stat-box p-5">
+                                    <h3>Maciek_IP</h3>
+                                    <p>Address_IP: 192.168.20.15; 192.168.20.16</p>
+                                </div>
+                            </div>
+                        </div>
                         <div id="chart" class="py-3 text-dark"></div>
                     </section>
                 </div>
@@ -94,13 +115,13 @@
                     <a href="addDevice.html">
                         <div class="menu-item">
                             <i class="far fa-comments"></i>
-                            <p>Add device</p>
+                            <p>Add IP Address</p>
                         </div>
                     </a>
                     <a href="removeDevice.html">
                         <div class="menu-item">
                             <i class="far fa-comments"></i>
-                            <p>Remove device</p>
+                            <p>Remove IP Adress</p>
                         </div>
                     </a>
                 </section>

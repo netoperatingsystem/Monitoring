@@ -11,6 +11,8 @@ from django.contrib.auth import login, logout
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib import messages
+from .models import Device
+
 
 # index
 
@@ -55,11 +57,57 @@ def devicesPage(request):
     Devices list page
     """
     # return HttpResponse("Aplikacja netOS!")
-    return render(request, 'netos/devices.html')
+    zapytanie = Device.objects.all().order_by('name')
+    dane = {'zapytanie' : zapytanie}
+    return render(request, 'netos/devices.html', dane)
 
-# chat message
+def addDevicePage(request):
+    """
+    Devices list page
+    """
+    # return HttpResponse("Aplikacja netOS!")
+    return render(request, 'netos/addDevice.html')
 
-def room(request, room_name):
-    return render(request, 'netos/room.html', {
-        'room_name': room_name
-    })
+def removeDevicePage(request):
+    """
+    Devices list page
+    """
+    # return HttpResponse("Aplikacja netOS!")
+    return render(request, 'netos/removeDevice.html')
+
+def helpPage(request):
+    """
+    Devices list page
+    """
+    # return HttpResponse("Aplikacja netOS!")
+    return render(request, 'netos/help.html')
+def ip_reservationPage(request):
+    """
+    Devices list page
+    """
+    # return HttpResponse("Aplikacja netOS!")
+    return render(request, 'netos/ip_reservation.html')
+def cpuPage(request):
+    """
+    Devices list page
+    """
+    # return HttpResponse("Aplikacja netOS!")
+    return render(request, 'netos/cpu.html')
+def memory_usagePage(request):
+    """
+    Devices list page
+    """
+    # return HttpResponse("Aplikacja netOS!")
+    return render(request, 'netos/memory_usage.html')
+def disk_usagePage(request):
+    """
+    Devices list page
+    """
+    # return HttpResponse("Aplikacja netOS!")
+    return render(request, 'netos/disk_usage.html')
+def networkPage(request):
+    """
+    Devices list page
+    """
+    # return HttpResponse("Aplikacja netOS!")
+    return render(request, 'netos/network.html')

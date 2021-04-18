@@ -37,16 +37,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'netos:index' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">IP reservation</a>
+                        <a class="nav-link" href="{% url 'netos:ip_reservation' %}">IP reservation</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'netos:devices' %}">Devices list</a>
+                        <a class="nav-link" href="{% url 'netos:devices' %}">Devices</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Network</a>
+                        <a class="nav-link" href="{% url 'netos:help' %}">Help</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -64,52 +64,74 @@
         <div class="row m-0 h-100">
             <div class="col-2 p-0 px-4 panel-left">
                 <section class="menu text-center">
-                    <a href="#" class="active">
+                    <a href="{% url 'netos:index' %}">
                         <div class="menu-item">
                             <i class="fas fa-sliders-h"></i>
                             <p>Home</p>
                         </div>
                     </a>
-                    <a href="#">
+                    <a href="https://drive.google.com/file/d/1-0g0mMz9y8Y53ZbY9Xlwb7sI5ajAp8ry/view?usp=sharing">
                         <div class="menu-item">
                             <i class="far fa-comments"></i>
-                            <p>Network</p>
+                            <p>Topology</p>
                         </div>
                     </a>
-                    <a href="#">
+                    <a href="https://www.skype.com/pl/">
                         <div class="menu-item">
                             <i class="fas fa-user-friends"></i>
-                            <p>Users</p>
+                            <p>Users Chat</p>
                         </div>
                     </a>
                 </section>
                 <section class="info-box text-light text-center mt-3">
-                    <h3>NetOS CMS</h3>
-                    <p class="text-muted">&copy; Copyright 2021</p>
+                    <h3>NetOS NMS</h3>
+                    <p class="text-white">&copy; Copyright 2021</p>
                 </section>
             </div>
 
-            <div class="col-10 p-0 panel-right">
-                <div class="col-9 mt-5">
+            <div class="col-8 p-0">
+                <div class="col-12 mt-0 ">
                     <section class="main-stats py-4 px-5 text-light text-center">
-                        <h1 class="mb-5">Main statistics</h1>
+                        <h1 class="mb-5">Main statistics - CPU</h1>
                         <div class="row mb-5">
-                            <div class="col-4">
+                            <div class="col-12">
                                 <div class="main-stat-box p-5">
-                                    <h3>Posts</h3>
-                                    <p>All: 1.830.484</p>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="main-stat-box p-5">
-                                    <h3>Topics</h3>
-                                    <p>All: 1.830.484</p>
+                                    <h3>Router</h3>
+                                    <p>Address_IP: 192.168.100.100</p>
                                 </div>
                             </div>
                         </div>
                         <div id="chart" class="py-3 text-dark"></div>
                     </section>
                 </div>
+            </div>
+            <div class="col-2 p-0 px-4 panel-left">
+                <section class="menu text-center">
+                    <a href="cpu.html">
+                        <div class="menu-item">
+                            <i class="far fa-comments"></i>
+                            <p>CPU</p>
+                        </div>
+                    </a>
+                    <a href="memory_usage.html">
+                        <div class="menu-item">
+                            <i class="far fa-comments"></i>
+                            <p>Memory Usage</p>
+                        </div>
+                    </a>
+                    <a href="network.html">
+                        <div class="menu-item">
+                            <i class="far fa-comments"></i>
+                            <p>Network</p>
+                        </div>
+                    </a>
+                    <a href="disk_usage.html">
+                        <div class="menu-item">
+                            <i class="far fa-comments"></i>
+                            <p>Disk Usage</p>
+                        </div>
+                    </a>
+                </section>
             </div>
         </div>
     </div>
@@ -136,11 +158,9 @@
     var options = {
         series: [{
             name: 'Active users',
-            data: [31, 40, 28, 51, 42, 109, 100]
-        }, {
-            name: 'All posts',
-            data: [11, 32, 45, 32, 34, 52, 41]
-        }],
+            data: [65, 65, 65, 65, 65, 65, 65]
+        }
+        ],
         chart: {
             height: 350,
             type: 'area',

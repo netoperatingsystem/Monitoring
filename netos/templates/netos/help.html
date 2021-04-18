@@ -77,33 +77,38 @@
                     <p class="text-white">&copy; Copyright 2021</p>
                 </section>
             </div>
+
             <div class="col-8 p-0">
                 <div class="col-12 mt-0 ">
-                    <section class="main-stats py-2 text-light text-center">
-                        {% for zap in zapytanie %}
-                        <div class="main-stat-box p-2">
-                        <h1><p>{{ zap }}</p><h1/>
+                    <section class="main-stats py-4 px-5 text-light text-center">
+                        <h1 class="mb-5">Contact</h1>
+                        <div class="row mb-5">
+                            <div class="col-12">
+                                <div class="main-stat-box p-5">
+                                <h3>Mail</h3>
+                                    <p>Mail: s16217@pjwstk.edu.pl ; s17817@pjwstk.edu.pl; s16664@pjwstk.edu.pl</p>
+                                <div/>
+                            <div/>
                         </div>
-                        {% endfor %}
-                        <div id="chart" class="py-3 text-dark"></div>
+                        <div class="row mb-5">
+                            <div class="col-12">
+                                <div class="main-stat-box p-5">
+                                    <h3>Version 1.0</h3>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                                <script>
+                                    var uzytkownik = 'jan_kowalski';
+                                    var domena = 'pjwstk.edu.com';
+                                    var dodatkowe = '?subject=NetOS +_nazwa_firmy&body=Co tam w trawie piszczy%9C:%0A';
+                                    var opis = 'Wyślij do nas info';
+                                    document.write('<a hr' + 'ef="mai' + 'lto:' + uzytkownik + '\x40' + domena + dodatkowe + '">');
+                                    if (opis) document.write(opis + '<'+'/a>');
+                                    else document.write(uzytkownik + '\x40' + domena + '<'+'/a>');
+                                </script>
                     </section>
                 </div>
-            </div>
-            <div class="col-2 p-0 px-4 panel-left">
-                <section class="menu text-center">
-                    <a href="addDevice.html">
-                        <div class="menu-item">
-                            <i class="far fa-comments"></i>
-                            <p>Add device</p>
-                        </div>
-                    </a>
-                    <a href="removeDevice.html">
-                        <div class="menu-item">
-                            <i class="far fa-comments"></i>
-                            <p>Remove device</p>
-                        </div>
-                    </a>
-                </section>
             </div>
         </div>
     </div>
