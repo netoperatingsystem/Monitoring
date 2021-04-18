@@ -6,7 +6,7 @@
           rel="stylesheet"
           integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
           crossorigin="anonymous">
-    <link rel="shortcut icon" type="image/png" href="{% static 'resources/favicon.PNG' %}"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'resources/favicon.png' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'netos/style.css' %}"/>
     <title>NetOS</title>
 </head>
@@ -19,7 +19,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-            <a href="/"><img src="/static/resources/logo.PNG" height="60"></a>
+            <a href="{% url 'netos:index' %}"><img class="navbar-logo" src="/static/resources/logo.png"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,17 +73,22 @@
                     </a>
                 </section>
                 <section class="info-box text-light text-center mt-3">
-                    <h3>NetOS NMS</h3>
+                    <h3>NetOS</h3>
                     <p class="text-white">&copy; Copyright 2021</p>
                 </section>
             </div>
-            <div class="col-8 p-0">
-                <div class="col-12 mt-0 ">
+            <div class="col-8 p-0 panel-right">
+                <div class="col-12 mt-0 in-panel-right">
                     <section class="main-stats py-2 text-light text-center">
-                        {% for zap in zapytanie %}
-                        <div class="main-stat-box p-2">
-                        <h1><p>{{ zap }}</p><h1/>
-                        </div>
+                    <h1 class="mb-5">Devices</h1>
+{#                        <div class="row mb-5">#}
+{#                            <div class="col-12">#}
+                                {% for zap in zapytanie %}
+                                <div class="main-stats-box p-5">
+                                    <p>{{ zap }}</p>
+                                </div>
+{#                            </div>#}
+{#                        </div>#}
                         {% endfor %}
                         <div id="chart" class="py-3 text-dark"></div>
                     </section>
