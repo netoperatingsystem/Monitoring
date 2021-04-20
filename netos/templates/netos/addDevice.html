@@ -28,13 +28,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'netos:index' %}">Home</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'netos:index' %}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'netos:ip_reservation' %}">IP reservation</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'netos:devices' %}">Devices</a>
+                        <a class="nav-link active" href="{% url 'netos:devices' %}">Devices</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'netos:help' %}">Help</a>
@@ -79,10 +79,26 @@
             </div>
             <div class="col-8 p-0 panel-right">
                 <div class="col-12 mt-0 in-panel-right">
-                    <section class="main-stats py-2 text-light text-center">
+                    <section class="main-stats py-4 px-5 text-center">
+                        <h1 class="mb-5">Add device</h1>
+                        <div class="form-device">
+                            <div class="mb-3">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-control" id="deviceNameInput">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Description</label>
+                                <textarea class="form-control" id="deviceDescriptionInput" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">IP Address</label>
+                                <input type="text" class="form-control" id="deviceIpInput">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn">Add</button>
                         {% for zap in zapytanie %}
                         <div class="main-stats-box p-2">
-                        <h1><p>{{ zap }}</p><h1/>
+                            <h1><p>{{ zap }}</p></h1>
                         </div>
                         {% endfor %}
                         <div id="chart" class="py-3 text-dark"></div>

@@ -96,11 +96,15 @@ span {
     flex-direction: column;
     justify-content: center;
     background-color: var(--interface-color);
+    min-width: 180px;
 }
 
 .panel-right {
     display: flex;
     justify-content: center;
+}
+
+.in-panel-right {
 }
 
 /* ------------------------ */
@@ -131,7 +135,7 @@ span {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 500px;
+    min-height: 500px;
 }
 
 .menu a {
@@ -139,12 +143,15 @@ span {
     flex-direction: column;
     justify-content: space-around;
     width: 100%;
+    min-width: 150px;
     height: 30%;
     color: #fff;
     text-decoration: none;
     border: 2px solid #ddd;
     border-radius: 15px;
     transition: background-color .3s;
+    margin-bottom: 10px;
+    margin-top : 10px;
 }
 
 .menu a:hover {
@@ -199,4 +206,8 @@ span {
 
 .main-stats-box p {
     font-size: 1rem;
+}
+
+.form-device {
+    text-align: left;
 }
