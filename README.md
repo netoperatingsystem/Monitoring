@@ -1,4 +1,4 @@
-# Monitoring
+# NetOS - Monitoring application
 - GIT 
 Creating a repository https://github.com/netoperatingsystem/Monitoring.git
 
