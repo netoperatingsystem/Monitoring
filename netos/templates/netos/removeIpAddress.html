@@ -1,4 +1,5 @@
 <!-- templates/netos/loginWeb.html -->
+
 <html>
 <head>
     {% load static %}
@@ -77,31 +78,40 @@
                     <p class="text-white">&copy; Copyright 2021</p>
                 </section>
             </div>
-            <div class="col-8 p-0 panel-right">
+           <div class="col-8 p-0 panel-right">
                 <div class="col-12 mt-0 in-panel-right">
-                    <section class="main-stats py-4 px-5 text-light text-center">
-                    <h1 class="mb-5">Remove device</h1>
-                        {% for zap in zapytanie %}
-                        <div class="main-stats-box p-2">
-                            <h1><p>{{ zap }}</p></h1>
+                    <section class="main-stats py-4 px-5 text-center">
+                        <h1 class="mb-5">Remove ip address</h1>
+                        <div class="form-device">
+                            <div class="mb-3">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                <select name="colorname">
+                                    <option selected disabled="true">----Devices----</option>
+                                    {% for result in Labipaddress%}
+                                    <option>{{result.name}}""{{result.device}}""{{result.description}}""{{result.address_ip}}""{{result.address_mac}}</option>
+                                    {% endfor %}
+                                </select>
+                                <button type="submit" class="btn">Remove</button>
+                                <hr/>
+                                </form>
+                            </div>
                         </div>
-                        {% endfor %}
-                        <div id="chart" class="py-3 text-dark"></div>
                     </section>
                 </div>
             </div>
             <div class="col-2 p-0 px-4 panel-left">
                 <section class="menu text-center">
-                    <a href="addDevice.html">
+                    <a href="addIpAddress.html">
                         <div class="menu-item">
                             <i class="far fa-comments"></i>
-                            <p>Add device</p>
+                            <p>Add IP Address</p>
                         </div>
                     </a>
-                    <a href="removeDevice.html">
+                    <a href="removeIpAddress.html">
                         <div class="menu-item">
                             <i class="far fa-comments"></i>
-                            <p>Remove device</p>
+                            <p>Remove IP Address</p>
                         </div>
                     </a>
                 </section>

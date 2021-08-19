@@ -78,50 +78,35 @@
                 </section>
             </div>
 
-            <div class="col-8 p-0 panel-right">
-                <div class="col-12 mt-0 in-panel-right">
-                    <section class="main-stats py-4 px-5 text-light text-center">
-                        <h1 class="mb-5">Reservation - IP Address</h1>
-                        <div class="row mb-5">
-                            <div class="col-12">
-                                <div class="main-stats-box p-5 text-left">
-                                    <h3>Paweł_IP</h3>
-                                    <p>Address_IP: 192.168.20.10; 192.168.20.11</p>
+              <div class="col-8 p-0 panel-right">
+                <div class="col-10 mt-0 in-panel-right">
+                    <section class="main-stats py-4 px-5 text-center">
+                    <h1 class="mb-5">IP Reservation</h1>
+                        {% for ip in request_ip %}
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <div class="main-stats-box p-5">
+                                        <h3><p>{{ ip }}</p></h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row mb-5">
-                            <div class="col-12">
-                                <div class="main-stats-box p-5">
-                                    <h3>Filip_IP</h3>
-                                    <p>Address_IP: 192.168.20.12; 192.168.20.13; 192.168.20.14</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-5">
-                            <div class="col-12">
-                                <div class="main-stats-box p-5">
-                                    <h3>Maciek_IP</h3>
-                                    <p>Address_IP: 192.168.20.15; 192.168.20.16</p>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                         <div id="chart" class="py-3 text-dark"></div>
                     </section>
                 </div>
             </div>
             <div class="col-2 p-0 px-4 panel-left">
                 <section class="menu text-center">
-                    <a href="addDevice.html">
+                    <a href="addIpAddress.html">
                         <div class="menu-item">
                             <i class="far fa-comments"></i>
                             <p>Add IP Address</p>
                         </div>
                     </a>
-                    <a href="removeDevice.html">
+                    <a href="removeIpAddress.html">
                         <div class="menu-item">
                             <i class="far fa-comments"></i>
-                            <p>Remove IP Adress</p>
+                            <p>Remove IP Address</p>
                         </div>
                     </a>
                 </section>
