@@ -127,26 +127,6 @@ def networkPage(request):
     return render(request, 'netos/network.html', data_ip)
     return render(request, 'netos/network.html')
 
-
-'''def addIpAddressPage(request):
-    """
-    Devices list page
-    """
-    labip = Device.objects.all().order_by('name')
-    data_ip = {'Device': labip}
-    return render(request, 'netos/addIpAddress.html', data_ip)
-
-    if request.method == "POST":
-        form = Form(request.POST)
-        if form.is_valid():
-            Labipaddress.device = request.POST.get('devicename')
-            Labipaddress.name = request.POST.get('name')
-            Labipaddress.description = request.POST.get('description')
-            Labipaddress.address_ip = request.POST.get('address_ip')
-            Labipaddress.address_mac = request.POST.get('address_mac')
-            Labipaddress.objects.create(nazwa=nowy_opis)
-        return render(request, 'netos/addIpAddress.html', data_ip)'''
-
 def addIpAddressPage(request):
     nowy_form = NowyLabipaddressForm()
     if request.method == "POST":
@@ -162,16 +142,6 @@ def addIpAddressPage(request):
     }
 
     return render(request, 'netos/addIpAddress.html', context)
-
-"""class PizzaDelete(DeleteView):
-    model = models.Pizza
-    success_url = reverse_lazy('pizza:lista')  # '/pizza/lista'
-
-    def get_context_data(self, **kwargs):
-        context = super(PizzaDelete, self).get_context_data(**kwargs)
-        skladniki = models.Skladnik.objects.filter(pizza=self.object)
-        context['skladniki'] = skladniki
-        return context"""
 
 def removeIpAddressPage(request):
     result = Labipaddress.objects.all().order_by('name')
