@@ -13,7 +13,7 @@ from django.urls import reverse
 from django.contrib import messages
 from .models import Device
 from .models import Labipaddress
-
+from .forms import NowyLabipaddressForm
 
 # index
 
@@ -22,6 +22,9 @@ def index(request):
     Index page
     """
     # return HttpResponse("Aplikacja netOS!")
+    labip = Device.objects.all().order_by('name')
+    data_ip = {'Device': labip}
+    return render(request, 'netos/index.html', data_ip)
     return render(request, 'netos/index.html')
 
 
@@ -86,6 +89,9 @@ def cpuPage(request):
     Devices list page
     """
     # return HttpResponse("Aplikacja netOS!")
+    labip = Device.objects.all().order_by('name')
+    data_ip = {'Device': labip}
+    return render(request, 'netos/cpu.html', data_ip)
     return render(request, 'netos/cpu.html')
 
 
@@ -94,6 +100,9 @@ def memory_usagePage(request):
     Devices list page
     """
     # return HttpResponse("Aplikacja netOS!")
+    labip = Device.objects.all().order_by('name')
+    data_ip = {'Device': labip}
+    return render(request, 'netos/memory_usage.html', data_ip)
     return render(request, 'netos/memory_usage.html')
 
 
@@ -102,6 +111,9 @@ def disk_usagePage(request):
     Devices list page
     """
     # return HttpResponse("Aplikacja netOS!")
+    labip = Device.objects.all().order_by('name')
+    data_ip = {'Device': labip}
+    return render(request, 'netos/disk_usage.html', data_ip)
     return render(request, 'netos/disk_usage.html')
 
 
@@ -110,29 +122,58 @@ def networkPage(request):
     Devices list page
     """
     # return HttpResponse("Aplikacja netOS!")
+    labip = Device.objects.all().order_by('name')
+    data_ip = {'Device': labip}
+    return render(request, 'netos/network.html', data_ip)
     return render(request, 'netos/network.html')
 
 
-def addIpAddressPage(request):
+'''def addIpAddressPage(request):
     """
     Devices list page
     """
     labip = Device.objects.all().order_by('name')
     data_ip = {'Device': labip}
     return render(request, 'netos/addIpAddress.html', data_ip)
-    if request.method == "POST":
-        savevalue = Labipaddress()
-        savevalue.device = request.POST.get('devicename')
-        savevalue.name = request.POST.get('name')
-        savevalue.description = request.POST.get('description')
-        savevalue.address_ip = request.POST.get('address_ip')
-        savevalue.address_mac = request.POST.get('address_mac')
-        savevalue.save()
-        return render(request, 'netos/addIpAddress.html', data_ip)
 
+    if request.method == "POST":
+        form = Form(request.POST)
+        if form.is_valid():
+            Labipaddress.device = request.POST.get('devicename')
+            Labipaddress.name = request.POST.get('name')
+            Labipaddress.description = request.POST.get('description')
+            Labipaddress.address_ip = request.POST.get('address_ip')
+            Labipaddress.address_mac = request.POST.get('address_mac')
+            Labipaddress.objects.create(nazwa=nowy_opis)
+        return render(request, 'netos/addIpAddress.html', data_ip)'''
+
+def addIpAddressPage(request):
+    nowy_form = NowyLabipaddressForm()
+    if request.method == "POST":
+        nowy_form = NowyLabipaddressForm(request.POST)
+        if nowy_form.is_valid():
+            #now our data type in form are correct
+            print(nowy_form.cleaned_data)
+            Labipaddress.objects.create(**nowy_form.cleaned_data)
+        else:
+            print(nowy_form.errors)
+    context = {
+        "form" : nowy_form
+    }
+
+    return render(request, 'netos/addIpAddress.html', context)
+
+"""class PizzaDelete(DeleteView):
+    model = models.Pizza
+    success_url = reverse_lazy('pizza:lista')  # '/pizza/lista'
+
+    def get_context_data(self, **kwargs):
+        context = super(PizzaDelete, self).get_context_data(**kwargs)
+        skladniki = models.Skladnik.objects.filter(pizza=self.object)
+        context['skladniki'] = skladniki
+        return context"""
 
 def removeIpAddressPage(request):
-
     result = Labipaddress.objects.all().order_by('name')
     result_name_IpAddress = Labipaddress.objects.all().order_by('name')
     result_addressIP_IpAddress = Labipaddress.objects.all().order_by('address_ip')

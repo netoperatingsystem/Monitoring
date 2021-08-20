@@ -94,11 +94,13 @@
                     <section class="main-stats py-4 px-5 text-light text-center">
                         <h1 class="mb-5">Main statistics - CPU</h1>
                         <div class="row mb-5">
-                            <div class="col-12">
-                                <div class="main-stats-box p-5">
-                                    <h3>Router</h3>
-                                    <p>Address_IP: 192.168.100.100</p>
-                                </div>
+                            <div class="mb-3">
+                            <select name="devicename">
+                                <option selected disabled="true">----Devices----</option>
+                                    {% for labip in Device%}
+                                    <option>{{labip.name}}</option>
+                                    {% endfor %}
+                                    </select>
                             </div>
                         </div>
                         <div id="chart" class="py-3 text-dark"></div>

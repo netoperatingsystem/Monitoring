@@ -77,37 +77,17 @@
                     <p class="text-white">&copy; Copyright 2021</p>
                 </section>
             </div>
-
             <div class="col-8 p-0 panel-right">
                 <div class="col-12 mt-0 in-panel-right">
-                    <form class="main-stats py-4 px-5 text-center">
+                    <section class="main-stats py-4 px-5 text-center">
                         <h1 class="mb-5">Add ip address</h1>
                         <div class="form-device">
                                 <div class="mb-3">
-                                    <form action="." method="POST">
-                                        {% csrf_token %}
-                                        <div class="mb-3">
-                                            <select name="devicename">
-                                            <option selected disabled="true">----Devices----</option>
-                                            {% for labip in Device%}
-                                            <option>{{labip.name}}</option>
-                                            {% endfor %}
-                                            </select>
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="text" name="name" placeholder="Enter name">
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="text" name="description" placeholder="Enter description">
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="text" name="address_ip" placeholder="Enter address_ip">
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="text" name="address_mac" placeholder="Enter address_mac">
-                                        </div>
-                                        <button type="submit" class="btn">Add</button>
-                                    </form>
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <button type="submit" class="btn">Add</button>
+                                </form>
                                 </div>
                         </div>
                     </section>
