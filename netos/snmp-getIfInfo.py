@@ -9,6 +9,10 @@ def getIfInfo(host, com, ver):
 
     session = Session(hostname=host, community=com, version=ver)
 
+    CRED = '\033[41m'
+    CGREEN = '\033[4m'
+    CEND = '\033[0m'
+
     try:
         if_num = int(session.get('ifNumber.0').value)
         if_numbers = if_num + 1
@@ -53,14 +57,15 @@ def getIfInfo(host, com, ver):
         inventory_extension = ".csv"
         inventory_file_name = inventory_base + inventory_ip + inventory_extension
 
-        print(inventory_file_name)
         with open(inventory_file_name, 'w') as file:
             writer = csv.writer(file, delimiter=',')
             writer.writerows(result_all)
+
+        print(CGREEN + inventory_file_name + " has been created.")
+
     except EasySNMPTimeoutError:
-        CRED = '\033[41m'
-        CEND = '\033[0m'
-        print(CRED + "Timeout on getting info from " + host + ". File for " + host + " is not created!" + CEND)
+
+        print(CRED + "Timeout on getting info from " + host + ". File is not created!" + CEND)
 
 with open('snmp-getIfInfo-schedule.csv') as getIfSchedule:
     reader = csv.reader(getIfSchedule)
