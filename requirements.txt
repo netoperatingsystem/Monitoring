@@ -23,3 +23,5 @@ sqlparse==0.4.1
 Twisted==20.3.0
 txaio==20.12.1
 zope.interface==5.2.0
+easysnmp~=0.2.5
+schedule~=1.1.0
