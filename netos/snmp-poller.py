@@ -9,17 +9,17 @@ def poll(host, com, ver, mib):
     output = session.get(mib)
     print(output.value)
 
-with open('inventory.csv') as inventory:
+with open('snmp-poller-inventory.csv') as inventory:
     invcsv = csv.reader(inventory)
     for row in invcsv:
         host = row[0]
-        freq = int(row[1])
-        com = row[2]
-        ver = int(row[3])
+        com = row[1]
+        ver = int(row[2])
+        freq = int(row[3])
         for mib in row[4:]:
             schedule.every(freq).seconds.do(poll, host, com, ver, mib)
-
 
 while True:
     schedule.run_pending()
     time.sleep(1)
+
