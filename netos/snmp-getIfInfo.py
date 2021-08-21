@@ -62,7 +62,7 @@ def getIfInfo(host, com, ver):
         CEND = '\033[0m'
         print(CRED + "Timeout on getting info from " + host + ". File for " + host + " is not created!" + CEND)
 
-with open('snmp-getIfInfo-schedule.csv') as getIfSchedule:
+with open('snmp-getIfInfo-schedule.csv.csv') as getIfSchedule:
     reader = csv.reader(getIfSchedule)
     for row in reader:
         host = row[0]
