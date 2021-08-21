@@ -10,7 +10,7 @@ def getIfInfo(host, com, ver):
     session = Session(hostname=host, community=com, version=ver)
 
     CRED = '\033[41m'
-    CGREEN = '\033[4m'
+    CGREEN = '\033[32m'
     CEND = '\033[0m'
 
     try:
@@ -61,7 +61,7 @@ def getIfInfo(host, com, ver):
             writer = csv.writer(file, delimiter=',')
             writer.writerows(result_all)
 
-        print(CGREEN + inventory_file_name + " has been created.")
+        print(CGREEN + inventory_file_name + " has been created." + CEND)
 
     except EasySNMPTimeoutError:
 
