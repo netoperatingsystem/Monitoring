@@ -95,12 +95,7 @@
                         <h1 class="mb-5">Main statistics - Memory</h1>
                         <div class="row mb-5">
                             <div class="mb-3">
-                            <select name="devicename">
-                                <option selected disabled="true">----Devices----</option>
-                                    {% for labip in Device%}
-                                    <option>{{labip.name}}</option>
-                                    {% endfor %}
-                                    </select>
+
                             </div>
                         </div>
                         <div id="chart" class="py-3 text-dark"></div>
@@ -160,9 +155,6 @@
 <script>
     var options = {
         series: [{
-            name: 'free_memory',
-            data: [20, 25, 20, 25, 20, 25, 20]
-        }, {
             name: 'usage_memory',
             data: [80, 75, 80, 75, 80, 75, 80]
         }],
