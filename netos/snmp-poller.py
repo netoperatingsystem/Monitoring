@@ -4,7 +4,6 @@ import schedule
 import time
 from easysnmp import *
 
-
 def getMemoryUsage(host, com, ver):
     session = Session(hostname=host, community=com, version=ver)
     CRED = '\033[41m'
@@ -25,7 +24,7 @@ def getMemoryUsage(host, com, ver):
             memory_extension = ".csv"
             memory_file_name = memory_base + memory_ip + memory_extension
 
-            memory_get_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            memory_get_time = (datetime.now() + timedelta(hours=2)).strftime("%Y-%m-%d %H:%M:%S")
             result_memory = [memory_get_time, hrStorageUsed]
 
             with open(memory_file_name, 'a+') as file_dsk:
@@ -67,7 +66,7 @@ def getCpuLoad(host, com, ver): # NOT READY
         cpu_extension = ".csv"
         cpu_file_name = cpu_base + cpu_ip + cpu_extension
 
-        cpu_get_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        cpu_get_time = (datetime.now() + timedelta(hours=2)).strftime("%Y-%m-%d %H:%M:%S")
         result_cpuload = [cpu_get_time, cpu_load]
 
         with open(cpu_file_name, 'a+') as file_cpu:
@@ -105,7 +104,7 @@ def getDiskUsage(host, com, ver):
             disk_extension = ".csv"
             disk_file_name = disk_base + disk_ip + disk_extension
 
-            disk_get_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            disk_get_time = (datetime.now() + timedelta(hours=2)).strftime("%Y-%m-%d %H:%M:%S")
             result_disk = [disk_get_time, dskTotal, dskAvailable, dskUsed]
 
             with open(disk_file_name, 'a+') as file_dsk:
