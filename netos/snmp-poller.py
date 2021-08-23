@@ -48,7 +48,7 @@ def getMemoryUsage(host, com, ver):
         print(e)
 
 
-def getCpuLoad(host, com, ver): # NOT READY
+def getCpuLoad(host, com, ver):
     session = Session(hostname=host, community=com, version=ver)
     CRED = '\033[41m'
     CGREEN = '\033[32m'
