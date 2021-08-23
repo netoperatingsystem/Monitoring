@@ -64,8 +64,10 @@ def getIfInfo(host, com, ver):
         print(CGREEN + inventory_file_name + " has been created." + CEND)
 
     except EasySNMPTimeoutError:
+        print(CRED + "Timeout on getting interfaces info from " + host + ". File is not updated!" + CEND)
 
-        print(CRED + "Timeout on getting info from " + host + ". File is not created!" + CEND)
+    except Exception as e:
+        print(CRED + "Something went wrong on " + host + "! Unknown error!\n\n" + e + CEND)
 
 with open('snmp-getIfInfo-schedule.csv') as getIfSchedule:
     reader = csv.reader(getIfSchedule)

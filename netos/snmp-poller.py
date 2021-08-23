@@ -18,7 +18,7 @@ def getMemoryUsage(host, com, ver):
         check_storage_ram = ".1.3.6.1.2.1.25.2.1.2" in session.get("hrStorageType.{}".format(hrStorageIndex)).value.lower()
 
         if check_storage_ram:
-            result_memory = str(session.get("hrStorageUsed.{}".format(hrStorageIndex)).value)
+            hrStorageUsed = str(session.get("hrStorageUsed.{}".format(hrStorageIndex)).value)
 
             memory_base = "snmp-memoryUsage-"
             memory_ip = str(host.replace(".", "_"))
@@ -26,74 +26,103 @@ def getMemoryUsage(host, com, ver):
             memory_file_name = memory_base + memory_ip + memory_extension
 
             memory_get_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            result_memory_text = result_memory + "," + memory_get_time
-            file_mem = open(memory_file_name, 'a+')
-            file_mem.write(result_memory_text + "\n")
-            file_mem.close()
+            result_memory = [memory_get_time, hrStorageUsed]
+
+            with open(memory_file_name, 'a+') as file_dsk:
+                writer = csv.writer(file_dsk, delimiter=',')
+                writer.writerow(result_memory)
 
             result_memory_total = str(session.get("hrStorageSize.{}".format(hrStorageIndex)).value)
             memory_file_name_total = memory_base + memory_ip + "-totalMemory" + memory_extension
             file_mem_total = open(memory_file_name_total, 'w')
             file_mem_total.write(result_memory_total + "\n")
+            file_mem_total.close()
 
-
-            print(CGREEN + memory_file_name + " has been created." + CEND)
+            print(CGREEN + "File " + memory_file_name + " has been updated." + CEND)
+            print(CGREEN + "File " + memory_file_name_total + " has been updated." + CEND)
 
     except EasySNMPTimeoutError:
-
         print(CRED + "Timeout on getting memory usage from " + host + ". File is not created!" + CEND)
 
+    except Exception as e:
+        print(CRED + "Something went wrong on " + host + "! Unknown error!\n\n" + CEND)
+        print(e)
 
-def getCpuLoad(host, com, ver):
+
+def getCpuLoad(host, com, ver): # NOT READY
     session = Session(hostname=host, community=com, version=ver)
+    CRED = '\033[41m'
+    CGREEN = '\033[32m'
+    CEND = '\033[0m'
 
-    resultDevice = []
+    try:
+        cpu_cores = 2
+        cpu_load_time = 1       # 1 = 1min load ; 2 = 5min load ; 3 = 15min load
+        cpu_load_raw = str(session.get("laLoad.{}".format(cpu_load_time)).value)
+        cpu_load_raw2 = float(cpu_load_raw) / cpu_cores
+        cpu_load = str("{:.2f}".format(cpu_load_raw2))
 
-    inventory_base = "snmp-devUsage-"
-    inventory_ip = str(host.replace(".", "_"))
-    inventory_deviceType = ""
-    inventory_extension = ".csv"
-    inventory_file_name = inventory_base + inventory_ip + inventory_deviceType + inventory_extension
+        cpu_base = "snmp-cpuLoad-"
+        cpu_ip = str(host.replace(".", "_"))
+        cpu_extension = ".csv"
+        cpu_file_name = cpu_base + cpu_ip + cpu_extension
 
-    with open(inventory_file_name, 'w') as file:
-        writer = csv.writer(file, delimiter=',')
-        writer.writerows(resultDevice)
+        cpu_get_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        result_cpuload = [cpu_get_time, cpu_load]
+
+        with open(cpu_file_name, 'a+') as file_cpu:
+            writer = csv.writer(file_cpu, delimiter=',')
+            writer.writerow(result_cpuload)
+
+        print(CGREEN + "File " + cpu_file_name + " has been updated." + CEND)
+
+    except EasySNMPTimeoutError:
+        print(CRED + "Timeout on getting CPU load from " + host + ". File is not updated!" + CEND)
+
+    except Exception as e:
+        print(CRED + "Something went wrong on " + host + "! Unknown error!\n\n" + CEND)
+        print(e)
 
 
-def getStorageUsage(host, com, ver):
+def getDiskUsage(host, com, ver):
     session = Session(hostname=host, community=com, version=ver)
+    CRED = '\033[41m'
+    CGREEN = '\033[32m'
+    CEND = '\033[0m'
 
-    resultDevice = []
+    try:
+        dskIndex = 1
 
-    inventory_base = "snmp-devUsage-"
-    inventory_ip = str(host.replace(".", "_"))
-    inventory_deviceType = ""
-    inventory_extension = ".csv"
-    inventory_file_name = inventory_base + inventory_ip + inventory_deviceType + inventory_extension
+        check_disk = "/dev/sda" in session.get("dskDevice.{}".format(dskIndex)).value.lower()
 
-    with open(inventory_file_name, 'w') as file:
-        writer = csv.writer(file, delimiter=',')
-        writer.writerows(resultDevice)
+        if check_disk:
+            dskTotal = str(session.get("dskTotal.{}".format(dskIndex)).value)
+            dskAvailable = str(session.get("dskAvail.{}".format(dskIndex)).value)
+            dskUsed = str(session.get("dskUsed.{}".format(dskIndex)).value)
+
+            disk_base = "snmp-diskUsage-"
+            disk_ip = str(host.replace(".", "_"))
+            disk_extension = ".csv"
+            disk_file_name = disk_base + disk_ip + disk_extension
+
+            disk_get_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            result_disk = [disk_get_time, dskTotal, dskAvailable, dskUsed]
+
+            with open(disk_file_name, 'a+') as file_dsk:
+                writer = csv.writer(file_dsk, delimiter=',')
+                writer.writerow(result_disk)
+
+            print(CGREEN + "File " + disk_file_name + " has been updated." + CEND)
+
+    except EasySNMPTimeoutError:
+        print(CRED + "Timeout on getting memory usage from " + host + ". File is not updated!" + CEND)
+
+    except Exception as e:
+        print(CRED + "Something went wrong on " + host + "! Unknown error!\n\n" + CEND)
+        print(e)
 
 
-def getNetworkUsage(host, com, ver):
-    session = Session(hostname=host, community=com, version=ver)
-
-    resultDevice = []
-
-    inventory_base = "snmp-devUsage-"
-    inventory_ip = str(host.replace(".", "_"))
-    inventory_deviceType = ""
-    inventory_extension = ".csv"
-    inventory_file_name = inventory_base + inventory_ip + inventory_deviceType + inventory_extension
-
-    with open(inventory_file_name, 'w') as file:
-        writer = csv.writer(file, delimiter=',')
-        writer.writerows(resultDevice)
-
-
-
-with open('snmp-poller-inventory.csv') as inventory:
+with open('snmp-poller-schedule.csv') as inventory:
     invcsv = csv.reader(inventory)
     for row in invcsv:
         host = row[0]
@@ -102,6 +131,8 @@ with open('snmp-poller-inventory.csv') as inventory:
         freq = int(row[3])
 
         schedule.every(freq).seconds.do(getMemoryUsage, host, com, ver)
+        schedule.every(freq).seconds.do(getDiskUsage, host, com, ver)
+        schedule.every(freq).seconds.do(getCpuLoad, host, com, ver)
 
 while True:
     schedule.run_pending()
