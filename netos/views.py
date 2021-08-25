@@ -69,29 +69,30 @@ def devicesPage(request):
     return render(request, 'netos/devices.html', dane)
 
 
-def devicesPageid(request):
+def devicesPageid(request, id):
 
     try:
-        device_id = Device.objects.filter(pk=id)
+        device_id = Device.objects.filter(pk=id).values_list('address_ip').first()
     except:
         device_id = None
 
     if device_id:
-        ip_address_raw = str(device_id.address_ip)
+        ip_address_raw = device_id
 
-    ip_address = ip_address_raw.replace(".", "_")
+    ip_address = str(ip_address_raw[0]).replace(".", "_")
 
-    if_info_file = "app/Monitoring/netos/snmp-ifInfo-" + ip_address
+    file_raw_name = "app/Monitoring/netos/snmp-ifInfo-" + ip_address
+    if_info_file = file_raw_name + ".csv"
 
     import csv
 
     results = []
     with open(if_info_file) as csvfile:
-        reader = csv.reader(csvfile)
+        reader = csv.reader(csvfile, delimiter=",")
         for row in reader:
             results.append(row)
 
-    return render(request, 'netos/removeIpAddress.html', results)
+    return render(request, 'netos/removeIpAddress.html', {"results": results})
 
 def helpPage(request):
     """
@@ -176,6 +177,3 @@ def removeIpAddressPage(request):
     result_address_mac = Labipaddress.objects.all().order_by('address_mac')
     result_ip = {'Labipaddress': result, 'Labipaddress': result_name_IpAddress, 'Labipaddress': result_addressIP_IpAddress,'Labipaddress': result_address_mac}
     return render(request, 'netos/removeIpAddress.html', result_ip)
-
-
-

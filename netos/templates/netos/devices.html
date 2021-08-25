@@ -81,12 +81,11 @@
                 <div class="col-10 mt-0 in-panel-right">
                     <section class="main-stats py-4 px-5 text-center">
                     <h1 class="mb-5">Devices</h1>
-                        {% for id,port,adminstatus,operstatus in devicesPageid %}
+                        {% for dev in devicesPageid %}
                             <div class="row mb-3">
                                 <div class="col-12">
                                     <div class="main-stats-box p-5">
-                                        <p>{{ id }} {{ port }} {{ adminstatus }} {{ operstatus }} </p>
-                                        <br>
+                                        <p><a href = "{{ dev.id }}">{{ dev.name }} </a> </p>
                                     </div>
                                 </div>
                             </div>

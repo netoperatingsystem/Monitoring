@@ -81,26 +81,26 @@
            <div class="col-8 p-0 panel-right">
                 <div class="col-12 mt-0 in-panel-right">
                     <section class="main-stats py-4 px-5 text-center">
-                        <h1 class="mb-5">Remove ip address</h1>
+                        <h1 class="mb-5">Device ports status</h1>
                         <div class="form-device">
+S
+                            <table class="device-status">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Type</th>
+                                    <th>Admin status</th>
+                                    <th>Oper Status</th>
+                                </tr>
+                            {% for dev in results %}
+                                <tr>
+                                    <td>{{ dev.0 }}</td>
+                                    <td>{{ dev.1 }}</td>
+                                    <td>{{ dev.2 }}</td>
+                                    <td>{{ dev.3 }}</td>
+                                </tr>
+                            {% endfor %}
+                            </table>
 
-                            {{ df }}
-
-
-                            <!--<div class="mb-3">
-                                <form method="POST">
-                                    {% csrf_token %}
-                                    <select name="colorname">
-
-                                    <option selected disabled="true">----Devices----</option>
-                                    {% for result in Labipaddress%}
-                                    <option>{{result.name}}""{{result.device}}""{{result.description}}""{{result.address_ip}}""{{result.address_mac}}</option>
-                                    {% endfor %}
-                                </select>
-                                <button type="submit" class="btn">Remove</button>
-                                <hr/>
-                                </form>
-                            </div>-->
                         </div>
                     </section>
                 </div>

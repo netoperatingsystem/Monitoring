@@ -184,7 +184,7 @@ span {
 }
 
 .main-stats-box {
-    height: 140px;
+    height: 50px;
     border-radius: 15px;
     border-style: solid;
     border-width: 2px;
@@ -210,4 +210,27 @@ span {
 
 .form-device {
     text-align: left;
+}
+
+.device-status {
+    border: 2px solid #711624;
+    width: 40%;
+    text-align: center;
+}
+
+.device-status th {
+    background-color: #E3304CFF;
+    border: 1px solid #711624;
+}
+
+.devices-status td {
+    border: 1px solid #711624;
+}
+
+.device-status tr {
+    border: 1px solid #711624;
+}
+
+.device-status tr:hover {
+  background-color: yellow;
 }
