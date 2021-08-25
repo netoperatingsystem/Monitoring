@@ -69,17 +69,29 @@ def devicesPage(request):
     return render(request, 'netos/devices.html', dane)
 
 
-def devicesPageid(request, id):
+def devicesPageid(request):
 
+    try:
+        device_id = Device.objects.filter(pk=id)
+    except:
+        device_id = None
 
-    device_id = Device.objects.get(pk=id)
-    df = pandas.read_csv('netos/snmp-ifInfo-192_168_100_10.csv')
-    df1 = pandas.read_csv('netos/snmp-ifInfo-192_168_100_20.csv')
-    df2 = pandas.read_csv('netos/snmp-ifInfo-192_168_100_100.csv')
+    if device_id:
+        ip_address_raw = str(device_id.address_ip)
 
-    context = {'df': df}
+    ip_address = ip_address_raw.replace(".", "_")
 
-    return render(request, 'netos/removeIpAddress.html', context)
+    if_info_file = "app/Monitoring/netos/snmp-ifInfo-" + ip_address
+
+    import csv
+
+    results = []
+    with open(if_info_file) as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            results.append(row)
+
+    return render(request, 'netos/removeIpAddress.html', results)
 
 def helpPage(request):
     """

@@ -1,0 +1,6 @@
+1,FastEthernet0/0,down,down
+2,GigabitEthernet1/0,up,up
+3,GigabitEthernet2/0,up,up
+5,GigabitEthernet2/0.10,up,up
+6,GigabitEthernet2/0.20,up,up
+7,GigabitEthernet2/0.100,up,up
