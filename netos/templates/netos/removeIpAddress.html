@@ -83,10 +83,15 @@
                     <section class="main-stats py-4 px-5 text-center">
                         <h1 class="mb-5">Remove ip address</h1>
                         <div class="form-device">
-                            <div class="mb-3">
+
+                            {{ df }}
+
+
+                            <!--<div class="mb-3">
                                 <form method="POST">
                                     {% csrf_token %}
-                                <select name="colorname">
+                                    <select name="colorname">
+
                                     <option selected disabled="true">----Devices----</option>
                                     {% for result in Labipaddress%}
                                     <option>{{result.name}}""{{result.device}}""{{result.description}}""{{result.address_ip}}""{{result.address_mac}}</option>
@@ -95,7 +100,7 @@
                                 <button type="submit" class="btn">Remove</button>
                                 <hr/>
                                 </form>
-                            </div>
+                            </div>-->
                         </div>
                     </section>
                 </div>

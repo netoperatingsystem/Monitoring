@@ -4,6 +4,8 @@
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
+from netos.views import *
+
 
 from . import views             # import of application views
 
@@ -13,8 +15,9 @@ urlpatterns = [
     url(r'^login/$', views.loginPage, name='login'),
     url(r'^logout/$', views.logoutPage, name='logout'),
     url(r'^devices/$', views.devicesPage, name='devices'),
+    path('devices/<id>/', devicesPageid, name='devicesPageid'),
     url(r'^ip_reservation/addIpAddress', views.addIpAddressPage, name='addIpAddress'),
-    url(r'^ip_reservation/removeIpAddress', views.removeIpAddressPage, name='removeIpAddress'),
+    # url(r'^ip_reservation/removeIpAddress', views.removeIpAddressPage, name='removeIpAddress'),
     url(r'^ip_reservation/$', views.ip_reservationPage, name='ip_reservation'),
     url(r'^help/$', views.helpPage, name='help'),
     url(r'^cpu', views.cpuPage, name='cpu'),

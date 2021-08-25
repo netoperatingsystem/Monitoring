@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 # -*- coding: utf-8 -*-
 # netos/views.py
-
+import pandas
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import login, logout
@@ -13,7 +13,9 @@ from django.urls import reverse
 from django.contrib import messages
 from .models import Device
 from .models import Labipaddress
+from .models import Category
 from .forms import NowyLabipaddressForm
+
 
 # index
 
@@ -62,10 +64,22 @@ def devicesPage(request):
     Devices list page
     """
     # return HttpResponse("Aplikacja netOS!")
-    zapytanie = Device.objects.all().order_by('name')
-    dane = {'zapytanie': zapytanie}
+    devicesPageid = Device.objects.all().order_by('name')
+    dane = {'devicesPageid': devicesPageid}
     return render(request, 'netos/devices.html', dane)
 
+
+def devicesPageid(request, id):
+
+
+    device_id = Device.objects.get(pk=id)
+    df = pandas.read_csv('netos/snmp-ifInfo-192_168_100_10.csv')
+    df1 = pandas.read_csv('netos/snmp-ifInfo-192_168_100_20.csv')
+    df2 = pandas.read_csv('netos/snmp-ifInfo-192_168_100_100.csv')
+
+    context = {'df': df}
+
+    return render(request, 'netos/removeIpAddress.html', context)
 
 def helpPage(request):
     """
