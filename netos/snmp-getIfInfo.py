@@ -67,7 +67,7 @@ def getIfInfo(host, com, ver):
         print(CRED + "Timeout on getting interfaces info from " + host + ". File is not updated!" + CEND)
 
     except Exception as e:
-        print(CRED + "Something went wrong on " + host + "! Unknown error!\n\n" + e + CEND)
+        print(CRED + "Something went wrong on " + host + "! Unknown error!" + CEND + "\n")
         print(e)
 
 

@@ -45,7 +45,7 @@ def getMemoryUsage(host, com, ver):
         print(CRED + "Timeout on getting memory usage from " + host + ". File is not created!" + CEND)
 
     except Exception as e:
-        print(CRED + "Something went wrong on " + host + "! Unknown error!\n\n" + CEND)
+        print(CRED + "Something went wrong on " + host + "! Unknown error!" + CEND + "\n")
         print(e)
 
 
@@ -80,7 +80,7 @@ def getCpuLoad(host, com, ver):
         print(CRED + "Timeout on getting CPU load from " + host + ". File is not updated!" + CEND)
 
     except Exception as e:
-        print(CRED + "Something went wrong on " + host + "! Unknown error!\n\n" + CEND)
+        print(CRED + "Something went wrong on " + host + "! Unknown error!" + CEND + "\n")
         print(e)
 
 
@@ -118,7 +118,7 @@ def getDiskUsage(host, com, ver):
         print(CRED + "Timeout on getting memory usage from " + host + ". File is not updated!" + CEND)
 
     except Exception as e:
-        print(CRED + "Something went wrong on " + host + "! Unknown error!\n\n" + CEND)
+        print(CRED + "Something went wrong on " + host + "! Unknown error!" + CEND + "\n")
         print(e)
 
 
