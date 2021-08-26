@@ -92,7 +92,7 @@ def devicesPageid(request, id):
         for row in reader:
             results.append(row)
 
-    return render(request, 'netos/removeIpAddress.html', {"results": results})
+    return render(request, 'netos/devices-single.html', {"results": results})
 
 def helpPage(request):
     """
