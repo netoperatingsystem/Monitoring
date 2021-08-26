@@ -14,7 +14,8 @@ def getMemoryUsage(host, com, ver):
         result_memory = []
         hrStorageIndex = 1
 
-        check_storage_ram = ".1.3.6.1.2.1.25.2.1.2" in session.get("hrStorageType.{}".format(hrStorageIndex)).value.lower()
+        check_storage_ram = ".1.3.6.1.2.1.25.2.1.2" in session.get("hrStorageType.{}".format(hrStorageIndex)).value\
+            .lower()
 
         if check_storage_ram:
             hrStorageUsed = str(session.get("hrStorageUsed.{}".format(hrStorageIndex)).value)
