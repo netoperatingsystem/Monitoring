@@ -68,6 +68,7 @@ def getIfInfo(host, com, ver):
 
     except Exception as e:
         print(CRED + "Something went wrong on " + host + "! Unknown error!\n\n" + e + CEND)
+        print(e)
 
 
 with open('snmp-getIfInfo-schedule.csv') as getIfSchedule:
