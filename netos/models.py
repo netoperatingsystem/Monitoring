@@ -33,6 +33,3 @@ class Labipaddress(models.Model):
     class Meta:
         verbose_name = "Labipaddress"
         verbose_name_plural = "Labipaddresses"
-
-
-

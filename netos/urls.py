@@ -2,7 +2,6 @@
 # netos/urls.py
 
 from django.conf.urls import url
-from django.contrib import admin
 from django.urls import path
 from netos.views import *
 
@@ -17,13 +16,11 @@ urlpatterns = [
     url(r'^devices/$', views.devicesPage, name='devices'),
     path('devices/<id>/', devicesPageid, name='devicesPageid'),
     url(r'^ip_reservation/addIpAddress', views.addIpAddressPage, name='addIpAddress'),
-    # url(r'^ip_reservation/removeIpAddress', views.removeIpAddressPage, name='removeIpAddress'),
     url(r'^ip_reservation/$', views.ip_reservationPage, name='ip_reservation'),
     url(r'^help/$', views.helpPage, name='help'),
     url(r'^cpu', views.cpuPage, name='cpu'),
     url(r'^memory_usage', views.memory_usagePage, name='memory_usage'),
     url(r'^disk_usage', views.disk_usagePage, name='disk_usage'),
-    url(r'^network', views.networkPage, name='network'),
 
     # url(r'^<str:room_name>/$', views.room, name='room'),
 ]
