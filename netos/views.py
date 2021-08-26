@@ -14,6 +14,7 @@ from .models import Device
 from .models import Labipaddress
 from .forms import NowyLabipaddressForm
 
+import csv
 
 # index
 
@@ -80,15 +81,17 @@ def devicesPageid(request, id):
     file_raw_name = "app/Monitoring/netos/snmp-ifInfo-" + ip_address
     if_info_file = file_raw_name + ".csv"
 
-    import csv
-
     results = []
     with open(if_info_file) as csvfile:
         reader = csv.reader(csvfile, delimiter=",")
         for row in reader:
             results.append(row)
 
-    return render(request, 'netos/devices-single.html', {"results": results})
+    dev_ip = ip_address_raw[0]
+    context_ip = {"dev_ip": dev_ip,
+                  "results": results}
+
+    return render(request, 'netos/devices-single.html', context_ip)
 
 def helpPage(request):
     """
