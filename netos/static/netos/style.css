@@ -236,3 +236,34 @@ span {
 .device-status tr:hover {
   background-color: yellow;
 }
+
+.team-images {
+    height: 150px;
+    border-radius: 10px;
+    border: 1px solid black;
+    text-align: left;
+}
+
+.about-table {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-table td {
+    padding: 10px;
+}
+
+.about-table tr {
+    border-bottom: 2px solid var(--interface-color);
+}
+
+.about-table th {
+    padding: 10px;
+}
+
+.send-email {
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 20px;
+}
