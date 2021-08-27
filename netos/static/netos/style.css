@@ -255,11 +255,12 @@ span {
 }
 
 .about-table tr {
-    border-bottom: 2px solid var(--interface-color);
+    border-top: 2px solid var(--interface-color);
 }
 
 .about-table th {
     padding: 10px;
+    padding-top: 15px;
 }
 
 .send-email {

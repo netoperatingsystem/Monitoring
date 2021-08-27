@@ -97,12 +97,12 @@ def devicesPageid(request, id):
     return render(request, 'netos/devices-single.html', context_ip)
 
 
-def helpPage(request):
+def aboutPage(request):
     """
     Devices list page
     """
     # return HttpResponse("Aplikacja netOS!")
-    return render(request, 'netos/help.html')
+    return render(request, 'netos/about.html')
 
 
 def ip_reservationPage(request):

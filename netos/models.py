@@ -22,7 +22,7 @@ class Device(models.Model):
         return self.name
 
 class Labipaddress(models.Model):
-    device = models.ForeignKey(Device, on_delete=models.CASCADE,null=True)
+    device = models.ForeignKey(Device, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=150)
     address_ip = models.CharField(max_length=15)

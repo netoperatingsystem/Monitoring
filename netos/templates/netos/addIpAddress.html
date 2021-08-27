@@ -37,7 +37,7 @@
                         <a class="nav-link" href="{% url 'netos:devices' %}">Devices</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'netos:help' %}">Help</a>
+                        <a class="nav-link" href="{% url 'netos:about' %}">About</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -82,13 +82,12 @@
                     <section class="main-stats py-4 px-5 text-center">
                         <h1 class="mb-5">Add IP Address</h1>
                         <div class="form-device">
-                                <div class="mb-3">
+                            <div class="mb-3">
                                 <form action="" method="POST">
                                     {% csrf_token %}
                                     {{ form.as_p }}
-                                    <button type="submit" class="btn">Add</button>
                                 </form>
-                                </div>
+                            </div>
                         </div>
                     </section>
                 </div>

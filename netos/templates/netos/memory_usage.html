@@ -46,14 +46,14 @@
                         <a class="nav-link" href="{% url 'netos:devices' %}">Devices</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'netos:help' %}">Help</a>
+                        <a class="nav-link" href="{% url 'netos:about' %}">About</a>
                     </li>
                 </ul>
                 <form class="d-flex">
                           <span class="navbar-text">
                               You're sign in as: <b>{{ user.username }}</b>
                           </span>
-                    <a type="button" class="btn" href="{% url 'netos:logout' %}">Sign out</a>
+                    <a type="button" class="btn" href="{% url 'netos:about' %}">Sign out</a>
                 </form>
             </div>
         </div>
