@@ -1,3 +1,6 @@
+from collections import Counter
+
+from django.contrib import messages
 from django.shortcuts import render
 
 # Create your views here.
@@ -93,6 +96,7 @@ def devicesPageid(request, id):
 
     return render(request, 'netos/devices-single.html', context_ip)
 
+
 def helpPage(request):
     """
     Devices list page
@@ -118,7 +122,6 @@ def cpuPage(request):
     labip = Device.objects.all().order_by('name')
     data_ip = {'Device': labip}
     return render(request, 'netos/cpu.html', data_ip)
-    return render(request, 'netos/cpu.html')
 
 
 def memory_usagePage(request):
@@ -129,7 +132,6 @@ def memory_usagePage(request):
     labip = Device.objects.all().order_by('name')
     data_ip = {'Device': labip}
     return render(request, 'netos/memory_usage.html', data_ip)
-    return render(request, 'netos/memory_usage.html')
 
 
 def disk_usagePage(request):
@@ -140,7 +142,6 @@ def disk_usagePage(request):
     labip = Device.objects.all().order_by('name')
     data_ip = {'Device': labip}
     return render(request, 'netos/disk_usage.html', data_ip)
-    return render(request, 'netos/disk_usage.html')
 
 
 def addIpAddressPage(request):
@@ -154,7 +155,6 @@ def addIpAddressPage(request):
         else:
             print(nowy_form.errors)
     context = {
-        "form" : nowy_form
+        "form": nowy_form
     }
-
     return render(request, 'netos/addIpAddress.html', context)

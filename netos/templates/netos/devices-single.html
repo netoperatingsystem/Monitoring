@@ -83,7 +83,7 @@
                     <section class="main-stats py-4 px-5 text-center">
                         <h1 class="mb-5">Device ports status - {{ dev_ip }}</h1>
                         <div class="form-device">
-                            <table class="device-status">
+                            <table class="device-status text-center">
                                 <tr>
                                     <th>ID</th>
                                     <th>Type</th>
@@ -92,10 +92,14 @@
                                 </tr>
                             {% for dev in results %}
                                 <tr>
-                                    <td>{{ dev.0 }}</td>
-                                    <td>{{ dev.1 }}</td>
-                                    <td>{{ dev.2 }}</td>
-                                    <td>{{ dev.3 }}</td>
+{#                                    <td>{{ dev.0 }}</td>#}
+{#                                    <td>{{ dev.1 }}</td>#}
+{#                                    <td>{{ dev.2 }}</td>#}
+{#                                    <td>{{ dev.3 }}</td>#}
+                                <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>1}</td>
                                 </tr>
                             {% endfor %}
                             </table>
