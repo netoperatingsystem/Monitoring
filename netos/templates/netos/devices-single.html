@@ -91,12 +91,22 @@
                                     <th>Oper Status</th>
                                 </tr>
                             {% for dev in results %}
+                                {%  if dev == "up" %}
+                                    <tr>
+                                        <td><i class="bi bi-circle-fill" style="color: green"></i></td>
+                                    </tr>
+                                {% elif dev == "down" %}
+                                    <tr>
+                                        <td><i class="bi bi-circle-fill" style="color: red"></i></td>
+                                    </tr>
+                                {%  else %}
                                 <tr>
                                     <td>{{ dev.0 }}</td>
                                     <td>{{ dev.1 }}</td>
                                     <td>{{ dev.2 }}</td>
                                     <td>{{ dev.3 }}</td>
                                 </tr>
+                                {% endif %}
                             {% endfor %}
                             </table>
 
